@@ -5,6 +5,7 @@
     --green:#49AA26;
     --blue:#263aaa;
     --blue_h:#263aaac5;
+    --red:#E83F5B;
 
 }
 
@@ -85,8 +86,8 @@ button:hover{
 }
 
 .button.cancel{
-    color: #e92929;
-    border: 2px solid #e92929;
+    color: var(--red);
+    border: 2px solid var(--red);
     border-radius:0.25rem;
 
     height: 50px;
@@ -99,10 +100,13 @@ button:hover{
 
     text-decoration: none;
 
+  
+
 }
 .button.cancel:hover{
-    
+   
     text-decoration: underline;
+  
 }
 
 /* Header ==================== */
