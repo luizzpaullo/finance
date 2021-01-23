@@ -2,6 +2,10 @@
 
 :root {
     --dark-blue:#363f5f;
+    --green:#49AA26;
+    --blue:#263aaa;
+    --blue_h:#263aaac5;
+
 }
 
 * {
@@ -46,7 +50,7 @@ h2 {
 }
 /* Links and Buttons ========== */
 a {
-    color: #263aaa;
+    color: var(--blue);
     text-decoration: none;
 
 }
@@ -55,16 +59,56 @@ a:hover{
     text-decoration:underline;
     ;
 }
+button{
+    width: 100%;
+    height: 50px;
+
+    border: none;
+
+    color: white;
+    background-color: var(--blue);
+
+    padding: 0;
+
+    border-radius: 0.25rem;
+
+    cursor: pointer;
+}
+
+button:hover{
+    background: var(--blue_h);
+}
 
 .button.new{
     display: inline-block;
     margin-bottom: .8rem;
 }
 
+.button.cancel{
+    color: #e92929;
+    border: 2px solid #e92929;
+    border-radius:0.25rem;
+
+    height: 50px;
+
+    display:flex;
+    align-items: center;
+    justify-content:center;
+
+    /* opacity: 0.6; */
+
+    text-decoration: none;
+
+}
+.button.cancel:hover{
+    
+    text-decoration: underline;
+}
+
 /* Header ==================== */
 
 header {
-    background: #316e1b;
+    background: var(--blue);
     padding: 2rem 0 10rem;
     text-align: center;
 
@@ -117,7 +161,7 @@ header {
 }
 
 .card.total {
-    background:#47f109f3;
+    background:#47f109;
     color: white;
 }
 /* Table ==================== */
@@ -180,6 +224,78 @@ td.income {
 td.expense{
     color:red;
 }
+/* Modal ==================== */
+    .modal-overlay {
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(0,0,0,0.7);
+        position: fixed;
+        top: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content:center;
+
+        opacity: 0; /*Esconde apenas no visual*/
+        visibility: hidden; /*remove espaço, tamanho ..*/
+
+        z-index: 999;
+    }
+
+    .modal-overlay.active{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal {
+        background:#F0F2f5;
+        padding: 2.4rem;
+
+        /* espaço lateral e arredondamento das bordas */
+        width: 90%;
+        max-width: 500px;
+        border-radius: .8rem;
+
+        z-index: 1;
+
+    }
+/* form ==================== */
+#form {
+    max-width: 500px;
+}
+
+#form  h2 {
+    margin-top:0;
+
+}
+
+#form form input{
+    width: 100%;
+
+    border-radius: 0.2rem;
+    border: none;
+    padding: 0.8rem;
+}
+.input-group{
+    margin-top:.8rem;
+}
+
+.input-group small{
+    opacity: 0.4;
+}
+
+.input-group.actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width:48%;
+}
+
 
 /* Footer ==================== */
 
