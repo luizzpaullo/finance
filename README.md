@@ -1,5 +1,5 @@
-<h1 align="center">Dev.Finance
-  <img alt="MaratonaDiscover" title="#MaratonaDiscover" src="./logo.svg" /></h1>
+<h1 align="center">
+  <img alt="MaratonaDiscover" title="#MaratonaDiscover" src="./assets/logo.svg" /></h1>
 
 
 <h1 align="center">
