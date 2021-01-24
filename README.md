@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="MaratonaDiscover" title="#MaratonaDiscover" src="./assets/logo.svg" / background:"black">
+  <img alt="MaratonaDiscover" title="#MaratonaDiscover" src="./assets/logo.svg"  background:"black" />
 </h1>
 
 
