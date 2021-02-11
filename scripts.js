@@ -19,34 +19,6 @@ const Modal = {
     }
 }
 
-
-// const transactions = [
-//     {
-//         id: 1,
-//         description: 'Energia',
-//         amount: -500010,
-//         date: '23/01/2021',
-//     },
-//     {
-//         id: 2,
-//         description: 'Site',
-//         amount: 3500020,
-//         date: '23/01/2021',
-//     },
-//     {
-//         id: 3,
-//         description: 'Internet',
-//         amount: -200300,
-//         date: '23/01/2021',
-//     },
-//     {
-//         id: 4,
-//         description: 'App',
-//         amount: 2500040,
-//         date: '09/02/2021',
-//     },
-// ]
-
 const Transaction = {
     all: [
             {
@@ -239,13 +211,4 @@ const App = {
 
 App.init()
 
-// Teste de add e clearTransactions
-// Transaction.add({
-//         id: 5,
-//         description: 'Cadeira Presidencial',
-//         amount: 200,
-//         date: '11/02/2021',
-//     })
 
-// Teste remove
-// Transaction.remove(0)
