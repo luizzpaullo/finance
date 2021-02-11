@@ -20,42 +20,83 @@ const Modal = {
 }
 
 
-const transactions = [
-    {
-        id: 1,
-        description: 'Energia',
-        amount: -500010,
-        date: '23/01/2021',
-    },
-    {
-        id: 2,
-        description: 'Site',
-        amount: 3500020,
-        date: '23/01/2021',
-    },
-    {
-        id: 3,
-        description: 'Internet',
-        amount: -200300,
-        date: '23/01/2021',
-    },
-    {
-        id: 4,
-        description: 'App',
-        amount: 2500040,
-        date: '09/02/2021',
-    },
-]
+// const transactions = [
+//     {
+//         id: 1,
+//         description: 'Energia',
+//         amount: -500010,
+//         date: '23/01/2021',
+//     },
+//     {
+//         id: 2,
+//         description: 'Site',
+//         amount: 3500020,
+//         date: '23/01/2021',
+//     },
+//     {
+//         id: 3,
+//         description: 'Internet',
+//         amount: -200300,
+//         date: '23/01/2021',
+//     },
+//     {
+//         id: 4,
+//         description: 'App',
+//         amount: 2500040,
+//         date: '09/02/2021',
+//     },
+// ]
 
 const Transaction = {
-    all: transactions,
-    
+    all: [
+            {
+                id: 1,
+                description: 'Energia',
+                amount: -500010,
+                date: '23/01/2021',
+            },
+            {
+                id: 2,
+                description: 'Site',
+                amount: 3500020,
+                date: '23/01/2021',
+            },
+            {
+                id: 3,
+                description: 'Internet',
+                amount: -200300,
+                date: '23/01/2021',
+            },
+            {
+                id: 4,
+                description: 'App',
+                amount: 2500040,
+                date: '09/02/2021',
+            },
+        ],
+
+
+    add(transaction){
+        Transaction.all.push(transaction)
+
+        // console.log(transaction.all)
+
+        App.reload()
+    },
+
+    remove(index){
+        Transaction.all.splice(index, 1) // remove pelo index do array ; deleta 1 registro.
+
+        App.reload()
+    },  
+
     incomes() {
            //somar as entradas
            let income = 0;
            //Pegar todas as transactions
            //para cada transaction
-           transactions.forEach(transaction => {
+        //    transactions.forEach(transaction => {
+            Transaction.all.forEach(transaction => {
                //se ela forma maior que zero
                if (transaction.amount > 0) {
                    //somar a uma variável e retornar a variável a
@@ -69,12 +110,14 @@ const Transaction = {
 
 
     },
+
     expenses() {
         //somar as saídas
         let expense = 0;
         //Pegar todas as transactions
         //para cada transaction
-        transactions.forEach(transaction => {
+       // transactions.forEach(transaction => {
+           Transaction.all.forEach(transaction => {
             //se ela forma MENOR que zero
             if (transaction.amount < 0) {
                 //somar a uma variável e retornar a variável a
@@ -87,6 +130,7 @@ const Transaction = {
 
 
     },
+
     total() {
         //total = entradas - saídas
         return Transaction.incomes() + Transaction.expenses()
@@ -108,6 +152,7 @@ const DOM ={
 
        DOM.transactionsContainer.appendChild(tr)
     },
+
     innerHTMLTransaction(transaction) {
         //colocando a classe correta Entrada || Saida
         const CSSClass = transaction.amount > 0 ? "income" : "expense"
@@ -128,6 +173,7 @@ const DOM ={
         `
         return html
     },
+
     updateBalance(){
         document
             .getElementById('incomeDisplay')
@@ -139,7 +185,10 @@ const DOM ={
             .getElementById('totalDisplay')
             .innerHTML =Utils.formatCurrency(Transaction.total()) // "Soma das Entradas"
     },
-    
+
+    clearTransactions() {
+        DOM.transactionsContainer.innerHTML =""
+    }
 }
 
 const Utils = {
@@ -165,13 +214,38 @@ const Utils = {
     }
 }
 
+const Form ={
 
-// DOM.addTransaction(transactions[0])
-// DOM.addTransaction(transactions[1])
-// DOM.addTransaction(transactions[2])
+}
 
-transactions.forEach(function (transaction) {
-    DOM.addTransaction(transaction)
-})
+const App = {
+    init() {
 
-DOM.updateBalance()
+        Transaction.all.forEach(transaction => {
+            DOM.addTransaction(transaction)
+        })
+
+
+        DOM.updateBalance()
+
+
+
+    },
+    reload() {
+     DOM.clearTransactions()
+      App.init()
+    },
+}
+
+App.init()
+
+// Teste de add e clearTransactions
+// Transaction.add({
+//         id: 5,
+//         description: 'Cadeira Presidencial',
+//         amount: 200,
+//         date: '11/02/2021',
+//     })
+
+// Teste remove
+// Transaction.remove(0)
