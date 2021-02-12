@@ -200,9 +200,9 @@ const Utils = {
 }
 
 const Form ={
-    description: document.querySelector('input#description'),
-    amount: document.getElementById('#amount'),
-    date: document.getElementById('#date'),
+    description: document.querySelector('#description'),
+    amount: document.querySelector('#amount'),
+    date: document.querySelector('#date'),
 
     getValues(){
         return {
