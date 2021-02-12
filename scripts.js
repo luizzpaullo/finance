@@ -117,7 +117,8 @@ const DOM ={
     addTransaction(transaction, index) {
         // console.log(transaction)
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
+        tr.dataset.index = index
 
        // console.log(tr.innerHTML) // testando no console do navegador 
 
@@ -125,7 +126,7 @@ const DOM ={
        DOM.transactionsContainer.appendChild(tr)
     },
 
-    innerHTMLTransaction(transaction) {
+    innerHTMLTransaction(transaction, index) {
         //colocando a classe correta Entrada || Saida
         const CSSClass = transaction.amount > 0 ? "income" : "expense"
 
@@ -138,7 +139,7 @@ const DOM ={
                             <td class="${CSSClass}">${amount}</td>
                             <td class="date">${transaction.date}</td>
                             <td>
-                                 <img src="assets/minus.svg" alt="Botão de Remover lançamento" />
+                                 <img onclick="Transaction.remove(${index})" src="assets/minus.svg" alt="Botão de Remover lançamento" />
                             </td>
                     
         
@@ -271,9 +272,8 @@ const Form ={
 const App = {
     init() {
 
-        Transaction.all.forEach(transaction => {
-            DOM.addTransaction(transaction)
-        })
+        Transaction.all.forEach(DOM.addTransaction)
+       
 
 
         DOM.updateBalance()
